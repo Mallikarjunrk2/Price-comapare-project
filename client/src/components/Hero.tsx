@@ -31,8 +31,8 @@ export default function Hero({ onSearch }: HeroProps) {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroImage})` }}
       />
-      {/* Warm orange-to-purple gradient overlay as requested */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#FF8C2A]/80 via-orange-500/70 to-purple-800/80" />
+      {/* Blue Framer-style gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-600/80 via-indigo-700/70 to-purple-900/80" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
       
       <div className="relative z-10 w-full max-w-6xl mx-auto px-6 lg:px-8 text-center">
