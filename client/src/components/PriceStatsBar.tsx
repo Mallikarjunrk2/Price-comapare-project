@@ -43,21 +43,26 @@ export default function PriceStatsBar({ priceStats }: PriceStatsBarProps) {
   ];
 
   return (
-    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
       {stats.map((stat, index) => (
-        <Card key={index} className="p-4 text-center space-y-3 hover-elevate bg-gradient-to-br from-card to-muted/20 border border-card-border/50 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
+        <div key={index} className="group bg-white/10 backdrop-blur-xl border border-white/20 rounded-[24px] p-8 text-center space-y-4 shadow-2xl hover:bg-white/[0.15] hover:scale-105 transition-all duration-500">
           <div className="flex justify-center">
-            <stat.icon className={`h-6 w-6 ${stat.color}`} />
+            <stat.icon className={`h-8 w-8 ${stat.color === 'text-destructive' ? 'text-red-400' : stat.color === 'text-chart-1' ? 'text-green-400' : stat.color === 'text-primary' ? 'text-[#FF8C2A]' : 'text-white/60'}`} />
           </div>
-          <div>
-            <div className="text-xs text-muted-foreground font-medium mb-1">
+          <div className="space-y-2">
+            <div className="text-sm text-white/70 font-medium">
               {stat.label}
             </div>
-            <div className={`text-lg font-bold ${stat.color}`} data-testid={stat.testId}>
+            <div className={`text-2xl font-display font-black ${
+              stat.color === 'text-destructive' ? 'text-red-400' : 
+              stat.color === 'text-chart-1' ? 'text-green-400' : 
+              stat.color === 'text-primary' ? 'text-[#FF8C2A]' : 
+              'text-white'
+            }`} data-testid={stat.testId}>
               {stat.value}
             </div>
           </div>
-        </Card>
+        </div>
       ))}
     </div>
   );

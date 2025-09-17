@@ -8,26 +8,27 @@ interface StickyBottomCTAProps {
 
 export default function StickyBottomCTA({ onCompare, onSetAlert }: StickyBottomCTAProps) {
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-gradient-to-t from-background/95 via-background/90 to-background/80 backdrop-blur-md border-t border-border/50 z-50 shadow-2xl">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-        <div className="flex justify-center space-x-4">
-          <Button
-            onClick={onCompare}
-            className="px-6 py-2 bg-gradient-to-r from-primary to-orange-600 hover:from-primary/90 hover:to-orange-600/90 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-            data-testid="button-sticky-compare"
-          >
-            <SearchIcon className="h-4 w-4 mr-2" />
-            Compare Now
-          </Button>
-          <Button
-            onClick={onSetAlert}
-            variant="outline"
-            className="px-6 py-2 bg-gradient-to-r from-card to-muted/50 border-2 border-primary/30 hover:border-primary/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-            data-testid="button-sticky-alert"
-          >
-            <BellIcon className="h-4 w-4 mr-2" />
-            Set Alert
-          </Button>
+    <div className="fixed bottom-8 left-8 right-8 z-50">
+      <div className="max-w-2xl mx-auto">
+        <div className="bg-black/40 backdrop-blur-2xl border border-white/20 rounded-[28px] px-8 py-6 shadow-2xl">
+          <div className="flex justify-center space-x-6">
+            <Button
+              onClick={onCompare}
+              className="px-8 py-4 bg-[#FF8C2A] hover:bg-[#FF8C2A]/90 text-white font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 text-lg"
+              data-testid="button-sticky-compare"
+            >
+              <SearchIcon className="h-5 w-5 mr-3" />
+              Compare Now
+            </Button>
+            <Button
+              onClick={onSetAlert}
+              className="px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-xl border border-white/30 text-white font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 text-lg"
+              data-testid="button-sticky-alert"
+            >
+              <BellIcon className="h-5 w-5 mr-3" />
+              Set Alert
+            </Button>
+          </div>
         </div>
       </div>
     </div>

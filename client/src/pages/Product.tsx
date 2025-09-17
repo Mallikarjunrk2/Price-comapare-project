@@ -96,27 +96,27 @@ export default function ProductPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black">
         <Header />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="animate-pulse space-y-8">
-            <div className="h-8 bg-muted rounded w-1/4"></div>
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-32">
+          <div className="animate-pulse space-y-12">
+            <div className="h-12 bg-white/10 rounded-2xl w-1/4"></div>
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-              <div className="lg:col-span-3 space-y-4">
-                <div className="h-80 bg-muted rounded-lg"></div>
-                <div className="h-32 bg-muted rounded-lg"></div>
+              <div className="lg:col-span-3 space-y-6">
+                <div className="h-96 bg-white/10 rounded-[28px]"></div>
+                <div className="h-48 bg-white/10 rounded-[28px]"></div>
               </div>
-              <div className="lg:col-span-6 space-y-4">
-                <div className="h-40 bg-muted rounded-lg"></div>
-                <div className="space-y-2">
-                  <div className="h-20 bg-muted rounded-lg"></div>
-                  <div className="h-20 bg-muted rounded-lg"></div>
-                  <div className="h-20 bg-muted rounded-lg"></div>
+              <div className="lg:col-span-6 space-y-6">
+                <div className="h-56 bg-white/10 rounded-[28px]"></div>
+                <div className="space-y-4">
+                  <div className="h-32 bg-white/10 rounded-[24px]"></div>
+                  <div className="h-32 bg-white/10 rounded-[24px]"></div>
+                  <div className="h-32 bg-white/10 rounded-[24px]"></div>
                 </div>
               </div>
-              <div className="lg:col-span-3 space-y-4">
-                <div className="h-60 bg-muted rounded-lg"></div>
-                <div className="h-40 bg-muted rounded-lg"></div>
+              <div className="lg:col-span-3 space-y-6">
+                <div className="h-80 bg-white/10 rounded-[28px]"></div>
+                <div className="h-56 bg-white/10 rounded-[28px]"></div>
               </div>
             </div>
           </div>
@@ -127,15 +127,18 @@ export default function ProductPage() {
 
   if (!product) {
     return (
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black">
         <Header />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-          <h1 className="text-2xl font-bold text-foreground mb-4">Product not found</h1>
-          <p className="text-muted-foreground mb-8">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-32 text-center">
+          <h1 className="text-4xl font-display font-bold text-white mb-6">Product not found</h1>
+          <p className="text-xl text-white/70 mb-12 max-w-2xl mx-auto">
             We couldn't find pricing information for "{query}"
           </p>
-          <Button onClick={handleBack}>
-            <ArrowLeftIcon className="h-4 w-4 mr-2" />
+          <Button 
+            onClick={handleBack}
+            className="bg-[#FF8C2A] hover:bg-[#FF8C2A]/90 text-white font-bold px-8 py-4 rounded-2xl text-lg"
+          >
+            <ArrowLeftIcon className="h-5 w-5 mr-3" />
             Back to Search
           </Button>
         </div>
@@ -144,23 +147,22 @@ export default function ProductPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background pb-20">
+    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black pb-32">
       <Header />
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-8xl mx-auto px-6 lg:px-8 py-32">
         {/* Back Button */}
         <Button
           onClick={handleBack}
-          variant="ghost"
-          className="mb-6"
+          className="mb-12 bg-white/10 hover:bg-white/20 backdrop-blur-xl border border-white/20 text-white font-medium px-6 py-3 rounded-2xl transition-all duration-300"
           data-testid="button-back"
         >
-          <ArrowLeftIcon className="h-4 w-4 mr-2" />
+          <ArrowLeftIcon className="h-5 w-5 mr-3" />
           Back to Search
         </Button>
 
-        {/* Three Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+        {/* Three Column Layout with premium spacing */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20">
           {/* Left Column - Product Info */}
           <div className="lg:col-span-3">
             <ProductInfo product={product} />
@@ -178,8 +180,8 @@ export default function ProductPage() {
         </div>
 
         {/* Price Statistics Bar */}
-        <div className="mb-8">
-          <h2 className="text-xl font-semibold text-foreground mb-6">Price Statistics</h2>
+        <div className="mb-16">
+          <h2 className="text-3xl font-display font-bold text-white mb-12">Price Statistics</h2>
           <PriceStatsBar priceStats={product.priceStats} />
         </div>
       </div>

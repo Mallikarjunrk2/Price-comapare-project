@@ -34,30 +34,37 @@ const faqs = [
 
 export default function FAQ() {
   return (
-    <section className="py-16 bg-gradient-to-br from-muted/20 via-background to-primary/5">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-foreground mb-4">
-            Frequently Asked Questions
+    <section className="py-32 bg-gradient-to-br from-black via-gray-900 to-black relative overflow-hidden">
+      {/* Background elements for depth */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#FF8C2A]/5 via-transparent to-purple-500/5"></div>
+      
+      <div className="max-w-5xl mx-auto px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-6xl font-display font-black text-white mb-6 leading-tight">
+            <span className="bg-gradient-to-r from-white via-[#FF8C2A] to-white bg-clip-text text-transparent">
+              Frequently Asked
+            </span>
+            <br />
+            <span className="text-white/90">Questions</span>
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-xl text-white/70 max-w-2xl mx-auto leading-relaxed">
             Everything you need to know about our price comparison service
           </p>
         </div>
 
-        <div className="bg-gradient-to-br from-card via-card to-muted/30 border border-card-border/50 rounded-lg p-2 shadow-lg">
-          <Accordion type="single" collapsible className="space-y-2">
+        <div className="space-y-6">
+          <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, index) => (
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className="bg-gradient-to-r from-card to-muted/20 border border-card-border/50 rounded-lg px-6 py-2 data-[state=open]:bg-gradient-to-r data-[state=open]:from-primary/10 data-[state=open]:to-orange-500/10 hover:shadow-md transition-all duration-300"
+                className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-[24px] px-8 py-4 data-[state=open]:bg-white/[0.15] hover:bg-white/[0.12] transition-all duration-500 shadow-2xl"
                 data-testid={`faq-item-${index}`}
               >
-                <AccordionTrigger className="text-left text-card-foreground font-semibold hover:no-underline">
+                <AccordionTrigger className="text-left text-white font-display font-bold text-xl hover:no-underline py-6 hover:text-[#FF8C2A] transition-colors duration-300">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground pt-4">
+                <AccordionContent className="text-white/80 text-lg leading-relaxed pb-6">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>

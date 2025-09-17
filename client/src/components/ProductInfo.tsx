@@ -12,54 +12,56 @@ export default function ProductInfo({ product }: ProductInfoProps) {
   };
 
   return (
-    <div className="bg-gradient-to-br from-card via-card to-muted/20 border border-card-border/50 rounded-lg p-6 shadow-lg">
-      <div className="space-y-6">
-        {/* Product Image */}
-        <div className="aspect-square bg-muted rounded-lg flex items-center justify-center overflow-hidden">
+    <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-[28px] p-8 shadow-2xl hover:bg-white/[0.15] transition-all duration-500">
+      <div className="space-y-8">
+        {/* Product Image with premium styling */}
+        <div className="aspect-square bg-white/5 rounded-[20px] flex items-center justify-center overflow-hidden border border-white/10">
           <img
             src={product.image}
             alt={product.name}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover rounded-[20px]"
             data-testid="img-product"
           />
         </div>
 
-        {/* Product Details */}
-        <div className="space-y-4">
-          <div>
-            <h2 className="text-2xl font-bold text-card-foreground mb-2" data-testid="text-product-name">
+        {/* Product Details with airy spacing */}
+        <div className="space-y-6">
+          <div className="space-y-4">
+            <h2 className="text-2xl font-display font-bold text-white leading-tight" data-testid="text-product-name">
               {product.name}
             </h2>
-            <p className="text-muted-foreground" data-testid="text-product-description">
+            <p className="text-white/70 text-lg leading-relaxed" data-testid="text-product-description">
               {product.short}
             </p>
           </div>
 
-          {/* Rating and Reviews */}
-          <div className="flex items-center space-x-4">
-            <div className="flex items-center space-x-1">
+          {/* Rating and Reviews with modern styling */}
+          <div className="flex items-center space-x-6">
+            <div className="flex items-center space-x-2">
               {[1, 2, 3, 4, 5].map((star) => (
                 <StarIcon
                   key={star}
-                  className={`h-4 w-4 ${star <= 4 ? 'text-yellow-400 fill-current' : 'text-muted-foreground'}`}
+                  className={`h-5 w-5 ${star <= 4 ? 'text-[#FF8C2A] fill-current' : 'text-white/30'}`}
                 />
               ))}
-              <span className="text-sm text-muted-foreground ml-2">4.0</span>
+              <span className="text-white/80 ml-2 font-medium">4.0</span>
             </div>
-            <span className="text-sm text-muted-foreground" data-testid="text-review-count">
+            <span className="text-white/60" data-testid="text-review-count">
               (1,234 reviews)
             </span>
           </div>
 
-          {/* Current Best Price */}
-          <div className="bg-gradient-to-br from-chart-1/20 via-chart-1/10 to-green-500/10 border-2 border-chart-1/20 rounded-lg p-4 shadow-inner">
-            <div className="text-sm text-muted-foreground mb-1">Best Price</div>
-            <div className="text-3xl font-bold bg-gradient-to-r from-chart-1 to-green-500 bg-clip-text text-transparent" data-testid="text-best-price">
+          {/* Current Best Price with glass card */}
+          <div className="bg-gradient-to-br from-[#FF8C2A]/20 to-green-500/20 backdrop-blur-sm border border-[#FF8C2A]/30 rounded-[24px] p-6">
+            <div className="text-white/70 mb-2 font-medium">Best Price</div>
+            <div className="text-4xl font-display font-black bg-gradient-to-r from-[#FF8C2A] to-green-400 bg-clip-text text-transparent" data-testid="text-best-price">
               {formatPrice(product.lowestPrice)}
             </div>
-            <Badge variant="secondary" className="mt-2">
-              Save ₹{(product.priceStats.highest - product.lowestPrice).toLocaleString('en-IN')}
-            </Badge>
+            <div className="mt-4">
+              <span className="inline-flex items-center px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 text-white font-medium">
+                Save ₹{(product.priceStats.highest - product.lowestPrice).toLocaleString('en-IN')}
+              </span>
+            </div>
           </div>
         </div>
       </div>
