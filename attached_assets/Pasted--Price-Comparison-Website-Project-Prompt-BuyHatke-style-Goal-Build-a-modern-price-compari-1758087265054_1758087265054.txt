@@ -1,0 +1,109 @@
+# Price Comparison Website — Project Prompt (BuyHatke-style)
+
+**Goal:** Build a modern price-comparison website using **Next.js + TailwindCSS** that mimics the product-comparison experience of BuyHatke.
+
+---
+
+## Overview
+Create a responsive product comparison experience where a user can paste a product link or type a product name and instantly see prices from multiple stores, deal score, and price stats. The initial scaffold should use mock JSON for API responses; later we will replace the backend with RapidAPI / affiliate APIs.
+
+---
+
+## Pages & Layout
+
+### 1. Landing / Homepage
+- Big hero with bold headline + subheadline (example: *“Compare prices instantly across Amazon, Flipkart, Croma and more”*).
+- Centered search bar that accepts:
+  - product name (e.g., `SanDisk SSD 1TB`) **or**
+  - full product link (Amazon / Flipkart URL).
+- Primary CTA: **Compare Now** (pill-shaped, accent orange).
+
+### 2. Product Page (primary view)
+When user submits a query or link, show a product page with **three main columns** on desktop:
+
+**Left — Product Info**
+- Product image gallery (large main image + thumbnails).
+- Title, rating, review count, short description.
+
+**Center — Comparison List / Table**
+- Top: product short summary + current best price.
+- List of store offers:
+  - store logo
+  - price (formatted, e.g., `₹10,799`)
+  - discount % (if any)
+  - delivery info (Free / Paid)
+  - “Buy” link
+- Highlight the **lowest price** row (green badge).
+- “View more prices” link if > 4 stores.
+
+**Right — Deal Score Panel**
+- Gauge meter (0–100) labeled *Deal Score*.
+- One-line verdict: *Best Deal / Average / Higher than Last Sale*.
+- Breakdown items:
+  - Last sale price
+  - All-time low
+  - 6-month low
+  - Average price
+- CTA: **Set Price Alert** (opens small inline form).
+
+**Bottom — Price Stats Bar**
+- Four small cards: Highest Price, Average Price, Lowest Price, Last Sale Price.
+- Optional small chart (sparklines) for price history.
+
+### 3. FAQ Section
+- Accordion UI with rounded cream cards (like your screenshot).
+- 3–6 example FAQs for demo.
+
+### 4. Sticky Mini CTA
+- A subtle sticky bar at bottom: shows two pill buttons (e.g., *Compare Now*, *Enroll / Learn More* or event countdown). Not intrusive.
+
+---
+
+## Design System & Visuals
+- **Accent / CTA Orange:** `#FF8C2A`
+- **Cream card background:** `#FFF7EE`
+- **Heading / Dark text:** `#111827`
+- **Muted text:** `#6B7280`
+- Rounded card corners: `20–28px`
+- Use ample white space, soft shadows, pill buttons, and smooth micro-interactions (hover scale, fade-in).
+- Suggested fonts: **Inter** or **Poppins**.
+- Icons: simple outline icons for stores, ratings stars, small gauge icon for deal score.
+
+---
+
+## Tech Stack
+- **Frontend:** Next.js (React) + TailwindCSS
+- **API / Backend:** Next.js API routes (`/pages/api/search.js`) — initially return mock JSON
+- **Data later:** RapidAPI / Affiliate APIs (Amazon Product API, Flipkart affiliate or scrapers) — call via server-side API route to hide keys
+- **DB (optional):** Supabase (for price history, alerts) — add later if implementing alerts/history
+- **Deploy:** GitHub → Vercel (Next.js is Vercel-native)
+- **Secrets:** Use `.env.local` (local) or Replit Secrets / Vercel Environment Variables for `RAPIDAPI_KEY`
+
+---
+
+## API Contract (mock)
+Create `GET /api/search?q=<query>` which returns JSON shaped like:
+
+```json
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "SanDisk 1TB Extreme Portable SSD",
+      "image": "/placeholder.png",
+      "short": "Portable SSD 1050MB/s, IP55",
+      "lowestPrice": 10799,
+      "stores": [
+        { "store": "Amazon", "price": 10799, "link": "https://amazon.in/...", "delivery": "Free", "discount": 4 },
+        { "store": "Flipkart", "price": 8254, "link": "https://flipkart.com/...", "delivery": "Free", "discount": 24 }
+      ],
+      "priceStats": {
+        "highest": 11299,
+        "average": 10320.08,
+        "lowest": 8473,
+        "lastSale": 8999
+      },
+      "dealScore": 24
+    }
+  ]
+}
