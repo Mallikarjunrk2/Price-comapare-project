@@ -30,12 +30,12 @@ export default function ComparisonTable({ product }: ComparisonTableProps) {
   return (
     <div className="space-y-6">
       {/* Summary */}
-      <Card className="p-6">
+      <Card className="p-6 bg-gradient-to-br from-chart-1/10 via-card to-muted/20 border-2 border-chart-1/20 shadow-xl">
         <div className="text-center space-y-2">
           <h3 className="text-lg font-semibold text-card-foreground">
             Best Deal Found
           </h3>
-          <div className="text-3xl font-bold text-chart-1">
+          <div className="text-3xl font-bold bg-gradient-to-r from-chart-1 to-green-500 bg-clip-text text-transparent drop-shadow-sm">
             {formatPrice(lowestPrice)}
           </div>
           <p className="text-sm text-muted-foreground">
@@ -51,7 +51,7 @@ export default function ComparisonTable({ product }: ComparisonTableProps) {
         </h3>
         
         {product.stores.map((store, index) => (
-          <Card key={index} className={`p-4 hover-elevate ${store.price === lowestPrice ? 'border-chart-1 bg-chart-1/5' : ''}`}>
+          <Card key={index} className={`p-4 hover-elevate transition-all duration-300 hover:shadow-xl ${store.price === lowestPrice ? 'border-2 border-chart-1 bg-gradient-to-r from-chart-1/10 to-green-500/10 shadow-lg' : 'bg-gradient-to-r from-card to-muted/10 hover:shadow-md'}`}>
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
                 {/* Store Logo */}

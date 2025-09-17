@@ -12,7 +12,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
   };
 
   return (
-    <div className="bg-card border border-card-border rounded-lg p-6">
+    <div className="bg-gradient-to-br from-card via-card to-muted/20 border border-card-border/50 rounded-lg p-6 shadow-lg">
       <div className="space-y-6">
         {/* Product Image */}
         <div className="aspect-square bg-muted rounded-lg flex items-center justify-center overflow-hidden">
@@ -52,9 +52,9 @@ export default function ProductInfo({ product }: ProductInfoProps) {
           </div>
 
           {/* Current Best Price */}
-          <div className="bg-chart-1/10 border border-chart-1/20 rounded-lg p-4">
+          <div className="bg-gradient-to-br from-chart-1/20 via-chart-1/10 to-green-500/10 border-2 border-chart-1/20 rounded-lg p-4 shadow-inner">
             <div className="text-sm text-muted-foreground mb-1">Best Price</div>
-            <div className="text-3xl font-bold text-chart-1" data-testid="text-best-price">
+            <div className="text-3xl font-bold bg-gradient-to-r from-chart-1 to-green-500 bg-clip-text text-transparent" data-testid="text-best-price">
               {formatPrice(product.lowestPrice)}
             </div>
             <Badge variant="secondary" className="mt-2">

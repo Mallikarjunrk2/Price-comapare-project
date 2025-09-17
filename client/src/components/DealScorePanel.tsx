@@ -37,31 +37,38 @@ export default function DealScorePanel({ product, onSetAlert }: DealScorePanelPr
   return (
     <div className="space-y-6">
       {/* Deal Score Gauge */}
-      <Card className="p-6 text-center space-y-4">
+      <Card className="p-6 text-center space-y-4 bg-gradient-to-br from-card to-muted/30 border-2 border-primary/10 shadow-xl">
         <h3 className="text-lg font-semibold text-card-foreground">Deal Score</h3>
         
-        {/* Circular Progress */}
+        {/* Circular Progress with Gradient */}
         <div className="relative w-32 h-32 mx-auto">
-          <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 to-orange-500/20 blur-md"></div>
+          <svg className="w-full h-full transform -rotate-90 relative z-10" viewBox="0 0 100 100">
+            <defs>
+              <linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" className={product.dealScore >= 80 ? 'text-chart-1' : product.dealScore >= 60 ? 'text-yellow-400' : 'text-muted-foreground'} stopColor="currentColor" />
+                <stop offset="100%" className={product.dealScore >= 80 ? 'text-green-400' : product.dealScore >= 60 ? 'text-orange-400' : 'text-gray-400'} stopColor="currentColor" />
+              </linearGradient>
+            </defs>
             <circle
               cx="50"
               cy="50"
               r="45"
               fill="none"
               stroke="currentColor"
-              strokeWidth="8"
-              className="text-muted"
+              strokeWidth="6"
+              className="text-muted/30"
             />
             <circle
               cx="50"
               cy="50"
               r="45"
               fill="none"
-              stroke="currentColor"
+              stroke="url(#scoreGradient)"
               strokeWidth="8"
               strokeLinecap="round"
               strokeDasharray={`${product.dealScore * 2.83} 283`}
-              className={getScoreColor(product.dealScore)}
+              className="drop-shadow-md"
             />
           </svg>
           <div className="absolute inset-0 flex items-center justify-center">
@@ -88,7 +95,7 @@ export default function DealScorePanel({ product, onSetAlert }: DealScorePanelPr
       </Card>
 
       {/* Price Statistics */}
-      <Card className="p-6 space-y-4">
+      <Card className="p-6 space-y-4 bg-gradient-to-br from-card via-card to-muted/20 border border-card-border/50 shadow-lg">
         <h3 className="text-lg font-semibold text-card-foreground">Price Breakdown</h3>
         
         <div className="space-y-3">

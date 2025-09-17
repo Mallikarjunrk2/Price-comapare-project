@@ -45,7 +45,7 @@ export default function PriceStatsBar({ priceStats }: PriceStatsBarProps) {
   return (
     <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
       {stats.map((stat, index) => (
-        <Card key={index} className="p-4 text-center space-y-3 hover-elevate">
+        <Card key={index} className="p-4 text-center space-y-3 hover-elevate bg-gradient-to-br from-card to-muted/20 border border-card-border/50 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
           <div className="flex justify-center">
             <stat.icon className={`h-6 w-6 ${stat.color}`} />
           </div>
