@@ -1,3 +1,40 @@
+# dependencies
+node_modules/
+
+# replit / platform files
+.replit
+.replit.nix
+replit.md
+attached_assets/
+
+# build output
+dist/
+build/
+.next/
+out/
+
+# environment files (never commit secrets)
+.env
+.env.local
+.env.*
+
+# system files
+.DS_Store
+Thumbs.db
+
+# log files
+npm-debug.log*
+yarn-error.log*
+
+# large binary/media files (design/demo only)
+*.zip
+*.mp4
+*.avi
+*.mov
+*.png
+*.jpg
+*.jpeg
+
 node_modules
 dist
 .DS_Store
